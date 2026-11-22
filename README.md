@@ -2,6 +2,8 @@
 
 一个纯前端的个人记账应用，直接用浏览器打开即可运行，数据保存在浏览器本地。
 
+另有微信小程序版：[qingji-miniprogram](https://github.com/jimmyfj832/qingji-miniprogram)，分类体系与数据字段完全一致，CSV 可互相导入。
+
 ## 功能
 
 - 用户注册 / 登录，多账户数据隔离
@@ -16,12 +18,20 @@
 
 直接用浏览器打开 `index.html` 即可，无需安装依赖或启动服务。
 
+也可以起一个本地服务访问（推荐，`file://` 协议下 IndexedDB 在部分浏览器受限）：
+
+```bash
+python3 -m http.server 8080
+# 然后访问 http://localhost:8080
+```
+
 ## 目录结构
 
 ```
 qingji/
 ├── index.html    # 页面结构 + 应用逻辑
 ├── styles.css    # 全部样式
+├── LICENSE
 └── README.md
 ```
 
@@ -31,7 +41,12 @@ qingji/
 - 无第三方依赖；样式集中在 `styles.css`，逻辑在 `index.html` 的 `<script>` 中
 - 图片上传自动压缩（最长边 900px、JPEG 质量 0.75）后存入 IndexedDB
 - 数据仅保存在当前浏览器本地，不跨设备同步
+- 单页应用（SPA）：登录、总览、明细、统计、设置五个视图在同一文件内切换
 
 ## 注意
 
 密码采用本地简易哈希存储，仅适合个人本地使用，请勿用于敏感数据。
+
+## License
+
+[MIT](./LICENSE) © 2026 jimmyfj832
